@@ -25,7 +25,8 @@ public class StudentService {
 		if (students == null || students.isEmpty()) {
 			throw new EntityCrudStudentAPINotFoundException("Nenhum estudante foi encontrado na base de dados do sistema.");
 		}
-		return studentRepository.findAll();
+		students.sort((student1, student2) -> Integer.compare(student1.getId(), student2.getId()));
+		return students;
 	}
 	
 	public Student findById(Integer id) {
